@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role{
+  admin
+  user
+}
+
+enum PenilaianEnum {
+  BB
+  MB
+  BSH
+  BSB
+}
+
+model users {
+  id Int @id @default(autoincrement())
+  username String
+  email String @unique
+  password String
+  role Role @default(admin)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  peniliaian penilaian[]
+}
+
+model kelas {
+  id Int @id @default(autoincrement())
+  nama_kelas String
+
+  siswa siswa[]
+}
+
+model siswa {
+  id Int @id @default(autoincrement())
+  nama_siswa String
+  kelasID Int
+
+  kelas kelas @relation(fields: [kelasID], references: [id])
+
+  penilaian penilaian[]
+}
+
+model indikator {
+  id Int @id @default(autoincrement())
+  hasil_indikator String
+  penilaian PenilaianEnum
+
+  kompetensidasar kompetensidasar[]
+  
+}
+
+model kompetensidasar {
+  id Int @id @default(autoincrement())
+  uraian_kd String
+  indikatorID Int
+
+  indikator indikator @relation(fields: [indikatorID], references: [id])
+
+  kompetensiinti kompetensiinti[]
+}
+
+model kompetensiinti {
+  id Int @id @default(autoincrement())
+  uraian_ki String
+  kompetensidasarID Int
+
+  kompetensidasar kompetensidasar @relation(fields: [kompetensidasarID], references: [id])
+
+  penilaian penilaian[]
+}
+
+model penilaian {
+  id Int @id @default(autoincrement())
+  adminID Int
+  siswaID Int
+  kompetensiintiID Int
+
+  users users @relation(fields: [adminID], references: [id])
+  siswa siswa @relation(fields: [siswaID], references: [id])
+  kompetensiinti kompetensiinti @relation(fields: [kompetensiintiID], references: [id])
+}

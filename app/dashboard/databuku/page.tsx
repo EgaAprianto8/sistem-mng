@@ -1,5 +1,3 @@
-// app/dashboard/datasiswa/page.tsx
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -23,7 +21,7 @@ const Home = () => {
   };
 
   const fetchClasses = async () => {
-    const response = await axios.get("/api/kelas"); // assuming you have a similar API endpoint for classes
+    const response = await axios.get("/api/kelas");
     setClasses(response.data);
   };
 
@@ -74,64 +72,33 @@ const Home = () => {
   return (
     <div className="w-full h-full">
       <div className="flex justify-between">
-        <h1>Ini adalah halaman untuk CRUD data siswa</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="hidden"
-            name="id"
-            value={form.id}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="nama_siswa"
-            placeholder="Nama Siswa"
-            value={form.nama_siswa}
-            onChange={handleChange}
-            required
-          />
-          <select
-            name="kelasID"
-            value={form.kelasID}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled>
-              Pilih Kelas
-            </option>
-            {classes.map((kelas: any) => (
-              <option key={kelas.id} value={kelas.id}>
-                {kelas.nama_kelas}
-              </option>
-            ))}
-          </select>
-          <button type="submit">{form.id ? "Update" : "Create"}</button>
-        </form>
-          <div>
-           <InputDataSiswa/>
-          </div>
+        <h1>Ini adalah halaman untuk CRUD data buku</h1>
+        <div>
+          <InputDataSiswa />
+        </div>
       </div>
-      <table className="w-full table-auto border-collapse mt-5">
-        <thead>
-          <tr>
-            <th>Nama Siswa</th>
-            <th>Kelas</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {students.map((student: any) => (
-            <tr key={student.id}>
-              <td>{student.nama_siswa}</td>
-              <td>{student.kelas?.nama_kelas}</td>
-              <td>
-                <button onClick={() => handleEdit(student)}>Edit</button>
-                <button onClick={() => handleDelete(student.id)}>Delete</button>
-              </td>
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100 mt-5">
+          <thead className="text-xs text-white uppercase bg-blue-600 dark:text-white">
+            <tr>
+              <th scope="col" className="px-6 py-3">Nama Buku</th>
+              <th scope="col" className="px-6 py-3">Penerbit</th>
+              <th scope="col" className="px-6 py-3">Stock</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {students.map((student: any) => (
+              <tr key={student.id} className="bg-blue-500 border-b border-blue-400">
+                <td className="px-6 py-4">{student.nama_siswa}</td>
+                <td className="px-6 py-4">{student.kelas?.nama_kelas}</td>
+                <td className="px-6 py-4">
+                 200
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

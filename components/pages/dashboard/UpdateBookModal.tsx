@@ -34,7 +34,7 @@ const UpdateBookModal: React.FC<UpdateBookModalProps> = ({ isOpen, onClose, onUp
     <Dialog open={isOpen} onClose={onClose} className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="fixed inset-0 bg-black opacity-30" />
-        <div className="relative bg-white rounded max-w-md mx-auto p-4 shadow-lg">
+        <div className="relative bg-white rounded max-w-md mx-auto p-4 shadow-lg w-[700px]">
           <Dialog.Title className="text-xl font-bold">Update Buku</Dialog.Title>
           <form onSubmit={handleUpdate} className="space-y-4 mt-4">
             <div>

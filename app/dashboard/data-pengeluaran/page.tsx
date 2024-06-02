@@ -119,18 +119,18 @@ const DataPengeluaran = () => {
           </tbody>
         </table>
       </div>
-      <button 
-        className="px-4 py-2 bg-meta-3 text-white rounded-md hover:bg-success mb-6"
-        onClick={handleCheckout}
-      >
-        Checkout
-      </button>
       <h2 className="text-2xl font-bold mb-4">Selected Books</h2>
       <ul className="list-disc list-inside bg-white shadow-md rounded-lg p-4">
         {selectedBooks.map((book, index) => (
           <li key={index} className="py-1">{book.name} - {book.quantity}</li>
         ))}
       </ul>
+      <button 
+        className="px-4 py-2 bg-meta-3 text-white rounded-md hover:bg-success mt-6"
+        onClick={handleCheckout}
+      >
+        Checkout
+      </button>
       <h2 className="text-2xl font-bold mt-6 mb-4">Checkout History</h2>
       <table className="min-w-full bg-white shadow-md rounded-lg">
         <thead className="bg-gray-50">
@@ -251,7 +251,7 @@ const CustomerModal = ({ onClose, onSave }: { onClose: () => void, onSave: (deta
             Batal
           </button>
           <button 
-            className="px-4 py-2 bg-meta-5 text-white rounded-md hover:bg-[#3C50E0]"
+            className="px-4 py-2 bg-[#5a6dfa] text-white rounded-md hover:bg-[#303983]"
             onClick={handleSave}
           >
             Simpan
@@ -265,17 +265,19 @@ const CustomerModal = ({ onClose, onSave }: { onClose: () => void, onSave: (deta
 const InvoiceModal = ({ invoice, onClose }: { invoice: any, onClose: () => void }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded shadow-md">
-        <button 
-          className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 mb-4"
-          onClick={onClose}
-        >
-          Close
-        </button>
-        <Invoice invoice={invoice} />
-        <div className="flex justify-end mt-4">
+      <div className="bg-white p-6 rounded shadow-md ">
+        <div className='flex justify-end'>
           <button 
-            className="px-4 py-2 bg-meta-5 text-white rounded-md hover:bg-[#3C50E0]"
+            className="px-4 py-2 text-[#8A99AF] rounded-md mr-2"
+            onClick={onClose}
+          >
+            ✕
+          </button>
+        </div>
+        <Invoice invoice={invoice} />
+        <div className="flex justify-end mt-4 gap-2">
+          <button 
+            className="px-4 py-2 bg-[#5a6dfa] text-white rounded-md hover:bg-[#303983]"
             onClick={() => window.print()}
           >
             Print

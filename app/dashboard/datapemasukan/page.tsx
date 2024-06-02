@@ -50,6 +50,7 @@ const DataPemasukan = () => {
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Penerbit</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
@@ -60,6 +61,7 @@ const DataPemasukan = () => {
               <td className="px-6 py-4 whitespace-nowrap">{book.publisher}</td>
               <td className="px-6 py-4 whitespace-nowrap">{book.stock}</td>
               <td className="px-6 py-4 whitespace-nowrap">{book.price}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{book.dateAdded}</td>
             </tr>
           ))}
         </tbody>

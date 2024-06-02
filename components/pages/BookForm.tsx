@@ -17,7 +17,12 @@ const BookForm: React.FC<BookFormProps> = ({ isOpen, onClose, onAdd }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const formattedPrice = `Rp ${Number(price).toLocaleString('id-ID')}`;
-    const book = { name, publisher, stock, price: formattedPrice, company };
+    const dateAdded = new Date().toLocaleDateString('id-ID', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+    const book = { name, publisher, stock, price: formattedPrice, company, dateAdded };
     onAdd(book);
     setName('');
     setPublisher('');

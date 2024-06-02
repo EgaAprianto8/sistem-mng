@@ -2,12 +2,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { usePathname } from 'next/navigation';
 
 type PropTypes = {
     children: React.ReactNode;
 };
 
 const DashboardLayouts = ({ children }: PropTypes) => {
+    const pathName = usePathname();
+    console.log(pathName);
+
     return (
         <div className="flex flex-col h-full">
             {/* Navbar */}
@@ -57,7 +61,13 @@ const DashboardLayouts = ({ children }: PropTypes) => {
 
                     {/* Tombol Navigasi */}
                     <div className="flex flex-col gap-2 mx-5 ">
-                        <button className="bg-[#f5e0ff] text-[#9B52BD] rounded-3xl w-full py-4 px-10 font-bold">
+                        <button
+                            className={
+                                pathName === '/dashboard'
+                                    ? 'bg-[#f5e0ff] text-[#9B52BD] rounded-3xl w-full py-4 px-10 font-bold'
+                                    : 'hover:bg-[#f5e0ff] bg-white hover:text-[#9B52BD] text-black rounded-3xl w-full py-4 px-10 hover:font-bold'
+                            }
+                        >
                             <Link href="/dashboard" className="flex flex-row gap-4 ">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +86,13 @@ const DashboardLayouts = ({ children }: PropTypes) => {
                                 Beranda
                             </Link>
                         </button>
-                        <button className="hover:bg-[#f5e0ff] bg-white hover:text-[#9B52BD] text-black rounded-3xl w-full py-4 px-6 hover:font-bold">
+                        <button
+                            className={
+                                pathName === '/dashboard'
+                                    ? 'bg-[#f5e0ff] text-[#9B52BD] rounded-3xl w-full py-4 px-10 font-bold'
+                                    : 'hover:bg-[#f5e0ff] bg-white hover:text-[#9B52BD] text-black rounded-3xl w-full py-4 px-10 hover:font-bold'
+                            }
+                        >
                             <Link href="/dashboard/datapemasukan" className="flex flex-row gap-4 ">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +111,13 @@ const DashboardLayouts = ({ children }: PropTypes) => {
                                 Data Pemasukan
                             </Link>
                         </button>
-                        <button className="hover:bg-[#f5e0ff] bg-white hover:text-[#9B52BD] text-black rounded-3xl w-full py-4 px-6  hover:font-bold">
+                        <button
+                            className={
+                                pathName === '/dashboard'
+                                    ? 'bg-[#f5e0ff] text-[#9B52BD] rounded-3xl w-full py-4 px-10 font-bold'
+                                    : 'hover:bg-[#f5e0ff] bg-white hover:text-[#9B52BD] text-black rounded-3xl w-full py-4 px-10 hover:font-bold'
+                            }
+                        >
                             <Link href="/dashboard/databuku" className="flex flex-row gap-4 ">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +136,13 @@ const DashboardLayouts = ({ children }: PropTypes) => {
                                 Data Buku
                             </Link>
                         </button>
-                        <button className="hover:bg-[#f5e0ff] bg-white hover:text-[#9B52BD] text-black rounded-3xl w-full py-4 px-6 hover:font-bold">
+                        <button
+                            className={
+                                pathName === '/dashboard'
+                                    ? 'bg-[#f5e0ff] text-[#9B52BD] rounded-3xl w-full py-4 px-10 font-bold'
+                                    : 'hover:bg-[#f5e0ff] bg-white hover:text-[#9B52BD] text-black rounded-3xl w-full py-4 px-10 hover:font-bold'
+                            }
+                        >
                             <Link href="/dashboard/datapengeluaran" className="flex flex-row gap-4 ">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +166,10 @@ const DashboardLayouts = ({ children }: PropTypes) => {
 
                 {/* Nama Halaman */}
                 <div className="absolute my-auto ml-10 text-white -mt-[55px] left-[400px] font-semibold xl:text-4xl text-3xl">
-                    Beranda
+                    {pathName === '/dashboard' ? 'Beranda' : ''}
+                    {pathName === '/dashboard/progress' ? 'Progress Harian' : ''}
+                    {pathName === '/dashboard/datasiswa' ? 'Data Siswa' : ''}
+                    {pathName === '/dashboard/rapotsemester' ? 'Rapot Semester' : ''}
                 </div>
 
                 <div className="w-full bg-white border rounded-2xl h-full shadow-md m-10 p-10">{children}</div>

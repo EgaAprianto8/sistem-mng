@@ -1,106 +1,92 @@
+'use client';
 
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useToast } from '@/components/ui/use-toast';
 
 function buatAkun() {
-  // redirect('/dashboard');
-  return (
-    <div className="w-full h-screen flex justify-center bg-[#9b52bd]">
-      <div className=" my-auto w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6" action="#">
-          <h5 className="text-xl font-medium text-gray-900 dark:text-white">
-            Daftar
-          </h5>
-          <div>
-            <label
-              for="email"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Masukan Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              placeholder="name@company.com"
-              required
-            />
-          </div>
-          <div>
-            <label
-              for="password"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Masukan Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="••••••••"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              required
-            />
-          </div>
-          <div>
-            <label
-              for="password"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Masukan Kembali Password Anda
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="••••••••"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              required
-            />
-          </div>
-          {/* <div className="flex items-start">
-            <div className="flex items-start">
-              <div className="flex items-center h-5">
-                <input
-                  id="remember"
-                  type="checkbox"
-                  value=""
-                  className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                  required
-                />
-              </div>
-              <label
-                for="remember"
-                className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Remember me
-              </label>
+    const [userName, setUserName] = useState('');
+    const [userPw, setUserPw] = useState('');
+    const router = useRouter();
+    const { toast } = useToast();
+
+    useEffect(() => {
+        // Buat akun admin jika belum ada
+        if (!localStorage.getItem('adminName') || !localStorage.getItem('adminPw')) {
+            localStorage.setItem('sudahMasuk', 'false');
+            localStorage.setItem('adminName', 'admin');
+            localStorage.setItem('adminPw', 'admin123');
+        }
+    }, []);
+
+    const handleLogin = () => {
+        // Data yang tersimpan dari register-form
+        const storedName = localStorage.getItem('name');
+        const storedPw = localStorage.getItem('pw');
+        const adminName = localStorage.getItem('adminName');
+        const adminPw = localStorage.getItem('adminPw');
+
+        // Periksa jika data yang dimasukkan sesuai dengan data yang tersimpan
+        if ((userName === storedName && userPw === storedPw) || (userName === adminName && userPw === adminPw)) {
+            router.push('/dashboard');
+            localStorage.setItem('sudahMasuk', 'true');
+        } else {
+            toast({
+                variant: 'destructive',
+                title: 'Terjadi kesalahan',
+                description: 'Mungkin Username atau Password yang Anda Masukkan Salah.',
+            });
+        }
+    };
+
+    return (
+        <div className="w-full h-screen flex justify-center bg-[#9b52bd] gap-10">
+            {/* REGISTER */}
+            <div className=" my-auto w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+                <div className="space-y-6">
+                    <h5 className="text-xl font-medium text-gray-900 dark:text-white">Login</h5>
+                    <div>
+                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Masukan Username
+                        </label>
+                        <input
+                            type="text"
+                            value={userName}
+                            id="email"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            placeholder="John"
+                            onChange={(e) => setUserName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label
+                            htmlFor="password"
+                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                            Masukan Password
+                        </label>
+                        <input
+                            type="password"
+                            value={userPw}
+                            id="password"
+                            placeholder="••••••••"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            onChange={(e) => setUserPw(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        onClick={handleLogin}
+                        className="w-full text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                        Login
+                    </button>
+                </div>
             </div>
-            <a
-              href="#"
-              className="ms-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
-            >
-              Lost Password?
-            </a>
-          </div> */}
-          <button
-            type="submit"
-            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Buat Akun
-          </button>
-          <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Sudah Punya Akun ?{" "}
-            <a
-              href="/"
-              className="text-blue-700 hover:underline dark:text-blue-500"
-            >
-              Login
-            </a>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+        </div>
+    );
 }
 
 export default buatAkun;

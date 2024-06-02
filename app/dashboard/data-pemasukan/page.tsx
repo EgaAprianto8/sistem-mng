@@ -50,6 +50,13 @@ const DataPemasukan = () => {
           </BarChart>
         </ResponsiveContainer>
       </div>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm mb-4 font-medium rounded-md text-white bg-[#8884d8] shadow-sm hover:bg-[#4a477d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7470b9]"
+              >
+                Tambah Buku
+              </button>
+              <BookForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={addBook} />
       <table className="min-w-full divide-y divide-gray-200 mb-6">
         <thead className="bg-bodydark1">
           <tr>
@@ -74,13 +81,6 @@ const DataPemasukan = () => {
           ))}
         </tbody>
       </table>
-      <button
-        onClick={() => setIsModalOpen(true)}
-        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#8884d8] shadow-sm hover:bg-[#4a477d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7470b9]"
-      >
-        Tambah Buku
-      </button>
-      <BookForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={addBook} />
     </div>
   );
 };

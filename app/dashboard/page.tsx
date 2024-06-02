@@ -1,8 +1,14 @@
-import React from 'react';
-import Beranda from './beranda/page';
+import { Metadata } from 'next';
 
-function page() {
-    return <Beranda />;
+export const metadata: Metadata = {
+    title: 'Admin Dashboard | Perpustakaan',
+    description: 'Admin Page untuk melakukan input dan merubah data',
+};
+
+export default function page() {
+    return (
+        <>
+            <div>Hallo</div>
+        </>
+    );
 }
-
-export default page;

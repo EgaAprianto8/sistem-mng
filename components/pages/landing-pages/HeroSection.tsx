@@ -1,10 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const HeroSection = () => {
-  const sudahLogin = localStorage.getItem("sudahMasuk");
+  const [sudahLogin, setSudahLogin] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSudahLogin(localStorage.getItem('sudahMasuk'));
+    }
+  }, []);
 
   return (
     <div className="relative lg:mt-0 w-full h-[600px] px-4 sm:px-10 flex flex-col gap-4 drop-shadow-lg py-20 justify-center bg-hero">
@@ -24,15 +30,15 @@ const HeroSection = () => {
         </p>
 
         {sudahLogin === "true" ? (
-         <div>
-           <Link
-           href="/dashboard"
-           title="dashboard"
-           className="bg-[#5488c4] w-[154px] h-[48px] rounded-lg mt-4 hover:bg-[#3e6491] transition duration-300 ease-in-out text-white p-4"
-         >
-           Dashboard
-         </Link>
-        </div>
+          <div>
+            <Link
+              href="/dashboard"
+              title="dashboard"
+              className="bg-[#5488c4] w-[154px] h-[48px] rounded-lg mt-4 hover:bg-[#3e6491] transition duration-300 ease-in-out text-white p-4"
+            >
+              Dashboard
+            </Link>
+          </div>
         ) : null}
       </div>
     </div>

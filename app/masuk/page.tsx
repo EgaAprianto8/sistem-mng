@@ -3,9 +3,8 @@
 import { redirect, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
-import DashboardLayouts from '../dashboard/layout';
 
-function buatAkun() {
+function BuatAkun() {
     const [userName, setUserName] = useState('');
     const [userPw, setUserPw] = useState('');
     const router = useRouter();
@@ -13,40 +12,41 @@ function buatAkun() {
 
     useEffect(() => {
         // Buat akun admin jika belum ada
-        if (!localStorage.getItem('adminName') || !localStorage.getItem('adminPw')) {
-            localStorage.setItem('sudahMasuk', 'false');
-            localStorage.setItem('adminName', 'admin');
-            localStorage.setItem('adminPw', 'admin123');
-        }
-        if (localStorage.getItem('sudahMasuk') === 'true') {
-            redirect('/dashboard')
+        if (typeof window !== 'undefined') {
+            if (!localStorage.getItem('adminName') || !localStorage.getItem('adminPw')) {
+                localStorage.setItem('sudahMasuk', 'false');
+                localStorage.setItem('adminName', 'admin');
+                localStorage.setItem('adminPw', 'admin123');
+            }
+            if (localStorage.getItem('sudahMasuk') === 'true') {
+                redirect('/dashboard');
+            }
         }
     }, []);
 
     const handleLogin = () => {
-        // Data yang tersimpan dari register-form
-        const storedName = localStorage.getItem('name');
-        const storedPw = localStorage.getItem('pw');
-        const adminName = localStorage.getItem('adminName');
-        const adminPw = localStorage.getItem('adminPw');
+        if (typeof window !== 'undefined') {
+            const storedName = localStorage.getItem('name');
+            const storedPw = localStorage.getItem('pw');
+            const adminName = localStorage.getItem('adminName');
+            const adminPw = localStorage.getItem('adminPw');
 
-        // Periksa jika data yang dimasukkan sesuai dengan data yang tersimpan
-        if ((userName === storedName && userPw === storedPw) || (userName === adminName && userPw === adminPw)) {
-            router.push('/dashboard');
-            localStorage.setItem('sudahMasuk', 'true');
-        } else {
-            toast({
-                variant: 'destructive',
-                title: 'Terjadi kesalahan',
-                description: 'Mungkin Username atau Password yang Anda Masukkan Salah.',
-            });
+            if ((userName === storedName && userPw === storedPw) || (userName === adminName && userPw === adminPw)) {
+                localStorage.setItem('sudahMasuk', 'true');
+                router.push('/dashboard');
+            } else {
+                toast({
+                    variant: 'destructive',
+                    title: 'Terjadi kesalahan',
+                    description: 'Mungkin Username atau Password yang Anda Masukkan Salah.',
+                });
+            }
         }
     };
 
     return (
         <div className="w-full h-screen flex justify-center bg-[#9b52bd] gap-10">
-            {/* REGISTER */}
-            <div className=" my-auto w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <div className="my-auto w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <div className="space-y-6">
                     <h5 className="text-xl font-medium text-gray-900 dark:text-white">Login</h5>
                     <div>
@@ -93,4 +93,4 @@ function buatAkun() {
     );
 }
 
-export default buatAkun;
+export default BuatAkun;

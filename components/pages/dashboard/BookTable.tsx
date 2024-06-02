@@ -30,13 +30,13 @@ const BookTable: React.FC<BookTableProps> = ({ books, onDelete, onUpdate }) => {
               <td className="px-6 py-4 whitespace-nowrap">{book.company}</td>
               <td className="px-6 py-4 whitespace-nowrap space-x-2">
                 <button 
-                  className="px-4 py-2 bg-meta-3 text-white rounded-md hover:bg-yellow-600"
+                  className="px-4 py-2 bg-meta-6 text-white rounded-md hover:bg-[#806b31]"
                   onClick={() => onUpdate(index)}
                 >
                   Update
                 </button>
                 <button 
-                  className="px-4 py-2 bg-meta-1 text-white rounded-md hover:bg-red-600"
+                  className="px-4 py-2 bg-meta-1 text-white rounded-md hover:bg-[#552127]"
                   onClick={() => onDelete(index)}
                 >
                   Delete

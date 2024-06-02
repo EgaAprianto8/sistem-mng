@@ -95,7 +95,7 @@ const DataPengeluaran = () => {  const [books, setBooksState] = useState<any[]>(
                 <td className="px-6 py-4 whitespace-nowrap">{book.stock}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button 
-                    className="px-4 py-2 bg-meta-5 text-white rounded-md hover:bg-[#3C50E0]"
+                    className="px-4 py-2 bg-[#5a6dfa] text-white rounded-md hover:bg-[#303983]"
                     onClick={() => handleSelectBook(index)}
                   >
                     Pilih
@@ -194,7 +194,7 @@ const QuantityModal = ({ onClose, onSave }: { onClose: () => void, onSave: (quan
             Batal
           </button>
           <button 
-            className="px-4 py-2 bg-meta-5 text-white rounded-md hover:bg-[#3C50E0]"
+            className="px-4 py-2 bg-[#5a6dfa] text-white rounded-md hover:bg-[#303983]"
             onClick={handleSave}
           >
             Simpan
@@ -252,7 +252,7 @@ const CustomerModal = ({ onClose, onSave }: { onClose: () => void, onSave: (deta
 const InvoiceModal = ({ invoice, onClose }: { invoice: any, onClose: () => void }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded shadow-md w-3/4">
+      <div className="bg-white p-6 rounded shadow-md ">
         <button 
           className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 mb-4"
           onClick={onClose}
@@ -262,7 +262,7 @@ const InvoiceModal = ({ invoice, onClose }: { invoice: any, onClose: () => void 
         <Invoice invoice={invoice} />
         <div className="flex justify-end mt-4">
           <button 
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            className="px-4 py-2 bg-meta-5 text-white rounded-md hover:bg-[#3C50E0]"
             onClick={() => window.print()}
           >
             Print

@@ -50,7 +50,7 @@ const DashboardLayouts = ({ children }: PropTypes) => {
             {/* Sidebar */}
             <div className="flex flex-row">
                 {/* Navigasi Sidebar */}
-                <div className="bg-white -mt-14 h-[800px] xl:w-[20%] sm:w-[30%] flex flex-col gap-20 border ml-10 rounded-xl">
+                <div className="bg-white -mt-14 h-[800px] xl:max-w-[400px] sm:w-[30%] flex flex-col gap-20 border ml-10 rounded-xl">
                     <div className="flex flex-col gap-4 p-10">
                         <div className="relative xl:w-[75px] xl:h-[75px] sm:w-[50px] sm:h-[50px] rounded-full bg-white border mx-auto"></div>
                         <div className="flex flex-col gap-2">
@@ -174,7 +174,9 @@ const DashboardLayouts = ({ children }: PropTypes) => {
                     {pathName === '/dashboard/rapotsemester' ? 'Rapot Semester' : ''}
                 </div>
 
-                <div className="w-full bg-white border rounded-2xl h-full shadow-md m-10 p-10">{children}</div>
+                <div className="container max-w-full max-h-full bg-white border rounded-2xl h-full shadow-md m-10 p-10">
+                    {children}
+                </div>
             </div>
         </div>
     );

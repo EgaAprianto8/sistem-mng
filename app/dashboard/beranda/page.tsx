@@ -16,17 +16,17 @@ function Beranda() {
 
         <h2 className="text-center mt-5 font-bold">Nama Admin</h2>
 
-      <div className='mt-12 mb-12 flex gap-12 py-4 px-8 text-lg'>
+      <div className='mt-12 mb-12 flex sm:gap-12 py-4 px-8 xl:text-lg text-sm'>
         <Link href="/dashboard/databuku">
-        <Button variant="outline" className='py-12 px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black'>Data Buku</Button>
+        <Button variant="outline" className='xl:py-12 xl:px-28 hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black'>Data Buku</Button>
         </Link>
 
         <Link href="/dashboard/datapemasukan">
-        <Button variant="outline" className='py-12 px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black'>Data Pemasukan</Button>
+        <Button variant="outline" className='xl:py-12 xl:px-28 hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black'>Data Pemasukan</Button>
         </Link>
 
         <Link href="/dashboard/datapengeluaran">
-        <Button variant="outline" className='py-12 px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black'>Data Pengeluaran</Button>
+        <Button variant="outline" className='xl:py-12 xl:px-28 hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black'>Data Pengeluaran</Button>
         </Link>
 
       </div>

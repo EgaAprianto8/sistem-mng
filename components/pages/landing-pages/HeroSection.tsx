@@ -7,7 +7,7 @@ const HeroSection = () => {
   const [sudahLogin, setSudahLogin] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
       setSudahLogin(localStorage.getItem('sudahMasuk'));
     }
   }, []);

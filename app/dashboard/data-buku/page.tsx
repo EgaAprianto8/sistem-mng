@@ -14,14 +14,14 @@ const BooksPage = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof localStorage !== "undefined") {
       const storedBooks = window.localStorage.getItem('books');
       setBooksState(storedBooks ? JSON.parse(storedBooks) : []);
     }
   }, []);
 
   const saveBooksToLocalStorage = (books: any[]) => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof localStorage !== "undefined") {
       window.localStorage.setItem('books', JSON.stringify(books));
     }
   };

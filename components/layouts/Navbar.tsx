@@ -13,7 +13,7 @@ const Navbar = () => {
   const [sudahLogin, setSudahLogin] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
       setSudahLogin(localStorage.getItem('sudahMasuk') === 'true');
     }
   }, []);

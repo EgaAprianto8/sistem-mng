@@ -28,12 +28,21 @@ const DataPengeluaran = () => {
     if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
       const storedBooks = window.localStorage.getItem('books');
       setBooksState(storedBooks ? JSON.parse(storedBooks) : []);
+
+      const storedHistory = window.localStorage.getItem('history');
+      setHistory(storedHistory ? JSON.parse(storedHistory) : []);
     }
   }, []);
 
   const saveBooksToLocalStorage = (books: any[]) => {
     if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
       window.localStorage.setItem('books', JSON.stringify(books));
+    }
+  };
+
+  const saveHistoryToLocalStorage = (history: any[]) => {
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      window.localStorage.setItem('history', JSON.stringify(history));
     }
   };
 
@@ -65,11 +74,13 @@ const DataPengeluaran = () => {
       return book;
     });
 
+    const total = selectedBooks.reduce((acc, book) => acc + parseFormattedPrice(book.price) * book.quantity, 0);
+
     const newInvoice = {
       id: history.length + 1,
       date: new Date().toLocaleDateString(),
       items: selectedBooks,
-      total: selectedBooks.reduce((acc, book) => acc + parseFormattedPrice(book.price) * book.quantity, 0),
+      total: total,
       customer: details
     };
 
@@ -79,7 +90,9 @@ const DataPengeluaran = () => {
     setBooksState(newBooks);
     setSelectedBooks([]);
     setInvoice(newInvoice);
-    setHistory([...history, newInvoice]);
+    const updatedHistory = [...history, newInvoice];
+    setHistory(updatedHistory);
+    saveHistoryToLocalStorage(updatedHistory);
     setShowCustomerModal(false);
   };
 
@@ -265,7 +278,7 @@ const CustomerModal = ({ onClose, onSave }: { onClose: () => void, onSave: (deta
 const InvoiceModal = ({ invoice, onClose }: { invoice: any, onClose: () => void }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded shadow-md ">
+      <div className="bg-white p-6 rounded shadow-md">
         <div className='flex justify-end'>
           <button 
             className="px-4 py-2 text-[#8A99AF] rounded-md mr-2"
@@ -310,14 +323,14 @@ const Invoice = ({ invoice }: { invoice: any }) => {
               <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{item.quantity}</td>
               <td className="px-6 py-4 whitespace-nowrap">{item.price}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{formatCurrency(parseFormattedPrice(item.price) * item.quantity)+".000"}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{formatCurrency(parseFormattedPrice(item.price) * item.quantity)+'.000'}</td>
             </tr>
           ))}
         </tbody>
         <tfoot>
           <tr>
             <td colSpan={3} className="px-6 py-4 text-right font-bold">Total</td>
-            <td className="px-6 py-4">{formatCurrency(invoice.items.reduce((acc: number, item: { price: any; quantity: number; }) => acc + parseFormattedPrice(item.price) * item.quantity, 0)) + ".000"}</td>
+            <td className="px-6 py-4">{formatCurrency(invoice.total)+'.000'}</td>
           </tr>
         </tfoot>
       </table>

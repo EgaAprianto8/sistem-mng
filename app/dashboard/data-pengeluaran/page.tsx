@@ -2,7 +2,20 @@
 
 import React, { useState, useEffect } from 'react';
 
-const DataPengeluaran = () => {  const [books, setBooksState] = useState<any[]>([]);
+const parseFormattedPrice = (formattedPrice: any) => {
+  return Number(formattedPrice.replace(/[^\d.-]/g, ''));
+};
+
+const formatCurrency = (amount: number) => {
+  return amount.toLocaleString('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0
+  });
+};
+
+const DataPengeluaran = () => {
+  const [books, setBooksState] = useState<any[]>([]);
   const [selectedBooks, setSelectedBooks] = useState<any[]>([]);
   const [invoice, setInvoice] = useState<any | null>(null);
   const [history, setHistory] = useState<any[]>([]);
@@ -12,14 +25,14 @@ const DataPengeluaran = () => {  const [books, setBooksState] = useState<any[]>(
   const [selectedBookIndex, setSelectedBookIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && typeof localStorage !== "undefined") {
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
       const storedBooks = window.localStorage.getItem('books');
       setBooksState(storedBooks ? JSON.parse(storedBooks) : []);
     }
   }, []);
 
   const saveBooksToLocalStorage = (books: any[]) => {
-    if (typeof window !== 'undefined' && typeof localStorage !== "undefined") {
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
       window.localStorage.setItem('books', JSON.stringify(books));
     }
   };
@@ -56,11 +69,11 @@ const DataPengeluaran = () => {  const [books, setBooksState] = useState<any[]>(
       id: history.length + 1,
       date: new Date().toLocaleDateString(),
       items: selectedBooks,
-      total: selectedBooks.reduce((acc, book) => acc + book.price * book.quantity, 0),
+      total: selectedBooks.reduce((acc, book) => acc + parseFormattedPrice(book.price) * book.quantity, 0),
       customer: details
     };
 
-    if (typeof window !== 'undefined' && typeof localStorage !== "undefined") {
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
       window.localStorage.setItem('books', JSON.stringify(newBooks));
     }
     setBooksState(newBooks);
@@ -133,7 +146,7 @@ const DataPengeluaran = () => {  const [books, setBooksState] = useState<any[]>(
             <tr key={index} className="hover:bg-gray-100">
               <td className="px-6 py-4 whitespace-nowrap">#{invoice.id}</td>
               <td className="px-6 py-4 whitespace-nowrap">{invoice.date}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{invoice.total}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{formatCurrency(invoice.total)}</td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <button
                   className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
@@ -252,7 +265,7 @@ const CustomerModal = ({ onClose, onSave }: { onClose: () => void, onSave: (deta
 const InvoiceModal = ({ invoice, onClose }: { invoice: any, onClose: () => void }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded shadow-md ">
+      <div className="bg-white p-6 rounded shadow-md">
         <button 
           className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 mb-4"
           onClick={onClose}
@@ -295,14 +308,14 @@ const Invoice = ({ invoice }: { invoice: any }) => {
               <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{item.quantity}</td>
               <td className="px-6 py-4 whitespace-nowrap">{item.price}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{item.price * item.quantity}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{formatCurrency(parseFormattedPrice(item.price) * item.quantity)+".000"}</td>
             </tr>
           ))}
         </tbody>
         <tfoot>
           <tr>
             <td colSpan={3} className="px-6 py-4 text-right font-bold">Total</td>
-            <td className="px-6 py-4">{invoice.total}</td>
+            <td className="px-6 py-4">{formatCurrency(invoice.total)}</td>
           </tr>
         </tfoot>
       </table>

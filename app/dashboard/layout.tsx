@@ -15,17 +15,26 @@ type PropTypes = {
 };
 
 const DashboardLayouts = ({ children }: PropTypes) => {
-    const sudahLogin = localStorage.getItem('sudahMasuk')
-    const pathName = usePathname();
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [loading, setLoading] = useState<boolean>(true);
+    const [sudahLogin, setSudahLogin] = useState<string | null>(null);
+
+    const pathName = usePathname();
 
     useEffect(() => {
+        if (typeof window !== 'undefined' && typeof localStorage !== "undefined") {
+            const loginStatus = localStorage.getItem('sudahMasuk');
+            setSudahLogin(loginStatus);
+        }
         setTimeout(() => setLoading(false), 1000);
     }, []);
-    if (sudahLogin == 'false'){
-        redirect('/')
-    }
+
+    useEffect(() => {
+        if (sudahLogin === 'false') {
+            redirect('/');
+        }
+    }, [sudahLogin]);
+
     return (
         <div className="dark:bg-boxdark-2 dark:text-bodydark overflow-hidden">
             {loading ? (

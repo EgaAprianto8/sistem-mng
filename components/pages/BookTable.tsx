@@ -17,7 +17,6 @@ const BookTable: React.FC<BookTableProps> = ({ books, onDelete, onUpdate }) => {
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Perusahaan</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
           </tr>
         </thead>
@@ -29,7 +28,6 @@ const BookTable: React.FC<BookTableProps> = ({ books, onDelete, onUpdate }) => {
               <td className="px-6 py-4 whitespace-nowrap">{book.stock}</td>
               <td className="px-6 py-4 whitespace-nowrap">{book.price}</td>
               <td className="px-6 py-4 whitespace-nowrap">{book.company}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{new Date(book.date).toLocaleDateString()}</td>
               <td className="px-6 py-4 whitespace-nowrap space-x-2">
                 <button 
                   className="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600"

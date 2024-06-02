@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fileforge/react-print": "^0.1.134",
     "@headlessui/react": "^2.0.4",
     "@prisma/client": "^5.14.0",
     "@radix-ui/react-avatar": "^1.0.4",

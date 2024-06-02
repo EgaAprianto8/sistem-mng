@@ -146,10 +146,10 @@ const DataPengeluaran = () => {
             <tr key={index} className="hover:bg-gray-100">
               <td className="px-6 py-4 whitespace-nowrap">#{invoice.id}</td>
               <td className="px-6 py-4 whitespace-nowrap">{invoice.date}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{formatCurrency(invoice.total)}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{formatCurrency(invoice.total)+'.000'}</td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <button
-                  className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                  className="px-4 py-2 bg-[#5a6dfa] text-white rounded-md hover:bg-[#303983]"
                   onClick={() => handleViewInvoice(invoice)}
                 >
                   View

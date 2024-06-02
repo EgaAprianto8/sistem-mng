@@ -45,19 +45,19 @@ function BuatAkun() {
     };
 
     return (
-        <div className="w-full h-screen flex justify-center bg-[#9b52bd] gap-10">
-            <div className="my-auto w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full h-screen flex justify-center bg-body gap-10">
+            <div className="my-auto w-full max-w-sm p-4 bg-white border border-gray-3 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <div className="space-y-6">
-                    <h5 className="text-xl font-medium text-gray-900 dark:text-white">Login</h5>
+                    <h5 className="text-xl font-medium text-form-input dark:text-white">Login</h5>
                     <div>
-                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-form-input dark:text-white">
                             Masukan Username
                         </label>
                         <input
                             type="text"
                             value={userName}
                             id="email"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            className="bg-gray-50 border border-gray-3 text-form-input text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="John"
                             onChange={(e) => setUserName(e.target.value)}
                             required
@@ -66,7 +66,7 @@ function BuatAkun() {
                     <div>
                         <label
                             htmlFor="password"
-                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            className="block mb-2 text-sm font-medium text-form-input dark:text-white"
                         >
                             Masukan Password
                         </label>
@@ -75,7 +75,7 @@ function BuatAkun() {
                             value={userPw}
                             id="password"
                             placeholder="••••••••"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            className="bg-gray-50 border border-gray-300 text-form-input text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             onChange={(e) => setUserPw(e.target.value)}
                             required
                         />
@@ -83,7 +83,7 @@ function BuatAkun() {
                     <button
                         type="submit"
                         onClick={handleLogin}
-                        className="w-full text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="w-full text-black bg-[#3C50E0] hover:bg-[#2a3371] focus:ring-4 focus:outline-none focus:ring-secondary font-medium rounded-lg text-sm px-5 py-2.5 text-center text-white"
                     >
                         Login
                     </button>

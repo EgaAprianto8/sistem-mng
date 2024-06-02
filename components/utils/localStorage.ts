@@ -1,9 +1,13 @@
 export const getBooks = () => {
-    const books = localStorage.getItem('books');
-    return books ? JSON.parse(books) : [];
+    if (typeof window !== "undefined") {
+      const books = localStorage.getItem('books');
+      return books ? JSON.parse(books) : [];
+    }
   };
   
   export const setBooks = (books: any[]) => {
-    localStorage.setItem('books', JSON.stringify(books));
+    if (typeof window !== "undefined") {
+      localStorage.setItem('books', JSON.stringify(books));
+    }
   };
   

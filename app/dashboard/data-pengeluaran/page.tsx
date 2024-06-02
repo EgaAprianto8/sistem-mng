@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { getBooks, setBooks } from '@/components/utils/localStorage';
+import { getBooks, setBooks  } from '@/components/utils/localStorage';
 
 const DataPengeluaran = () => {
   const [books, setBooksState] = useState<any[]>([]);
@@ -55,7 +55,9 @@ const DataPengeluaran = () => {
       customer: details
     };
 
-    setBooks(newBooks);
+    if (typeof window !== 'undefined') {
+      setBooks(newBooks);
+    }
     setBooksState(newBooks);
     setSelectedBooks([]);
     setInvoice(newInvoice);

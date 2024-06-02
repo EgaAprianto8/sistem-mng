@@ -28,7 +28,9 @@ const BooksPage = () => {
 
   const updateBook = (index: number, book: any) => {
     const newBooks = books.map((b, i) => (i === index ? book : b));
-    setBooks(newBooks);
+    if (typeof window !== 'undefined') {
+      setBooks(newBooks);
+    }
     setBooksState(newBooks);
   };
 
@@ -46,7 +48,9 @@ const BooksPage = () => {
   const confirmDelete = () => {
     if (selectedIndex !== null) {
       const newBooks = books.filter((_, i) => i !== selectedIndex);
-      setBooks(newBooks);
+      if (typeof window !== 'undefined') {
+        setBooks(newBooks);
+      }
       setBooksState(newBooks);
     }
   };

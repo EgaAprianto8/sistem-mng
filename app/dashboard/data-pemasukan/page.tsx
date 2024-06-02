@@ -16,7 +16,9 @@ const DataPemasukan = () => {
 
   const addBook = (book: any) => {
     const newBooks = [...books, book];
-    setBooks(newBooks);
+    if (typeof window !== 'undefined') {
+      setBooks(newBooks);
+    }
     setBooksState(newBooks);
   };
 

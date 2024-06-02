@@ -13,14 +13,14 @@ const DataPengeluaran = () => {  const [books, setBooksState] = useState<any[]>(
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const storedBooks = localStorage.getItem('books');
+      const storedBooks = window.localStorage.getItem('books');
       setBooksState(storedBooks ? JSON.parse(storedBooks) : []);
     }
   }, []);
 
   const saveBooksToLocalStorage = (books: any[]) => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('books', JSON.stringify(books));
+      window.localStorage.setItem('books', JSON.stringify(books));
     }
   };
 
@@ -61,7 +61,7 @@ const DataPengeluaran = () => {  const [books, setBooksState] = useState<any[]>(
     };
 
     if (typeof window !== 'undefined') {
-      localStorage.setItem('books', JSON.stringify(newBooks));
+      window.localStorage.setItem('books', JSON.stringify(newBooks));
     }
     setBooksState(newBooks);
     setSelectedBooks([]);

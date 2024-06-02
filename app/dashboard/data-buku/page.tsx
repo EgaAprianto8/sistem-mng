@@ -5,7 +5,6 @@ import BookForm from '@/components/pages/dashboard/BookForm';
 import BookTable from '@/components/pages/dashboard/BookTable';
 import UpdateBookModal from '@/components/pages/dashboard/UpdateBookModal';
 import DeleteConfirmationModal from '@/components/pages/dashboard/DeleteConfirmationModal';
-import { getBooks, setBooks } from '@/components/utils/localStorage';
 
 const BooksPage = () => {
   const [books, setBooksState] = useState<any[]>([]);
@@ -16,22 +15,27 @@ const BooksPage = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setBooksState(getBooks());
+      const storedBooks = localStorage.getItem('books');
+      setBooksState(storedBooks ? JSON.parse(storedBooks) : []);
     }
   }, []);
 
+  const saveBooksToLocalStorage = (books: any[]) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('books', JSON.stringify(books));
+    }
+  };
+
   const addBook = (book: any) => {
     const newBooks = [...books, book];
-    setBooks(newBooks);
     setBooksState(newBooks);
+    saveBooksToLocalStorage(newBooks);
   };
 
   const updateBook = (index: number, book: any) => {
     const newBooks = books.map((b, i) => (i === index ? book : b));
-    if (typeof window !== 'undefined') {
-      setBooks(newBooks);
-    }
     setBooksState(newBooks);
+    saveBooksToLocalStorage(newBooks);
   };
 
   const handleUpdate = (index: number) => {
@@ -48,19 +52,16 @@ const BooksPage = () => {
   const confirmDelete = () => {
     if (selectedIndex !== null) {
       const newBooks = books.filter((_, i) => i !== selectedIndex);
-      if (typeof window !== 'undefined') {
-        setBooks(newBooks);
-      }
       setBooksState(newBooks);
+      saveBooksToLocalStorage(newBooks);
+      setIsDeleteModalOpen(false);
     }
   };
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Stok Gudang</h1>
-      <BookForm onAdd={addBook} isOpen={false} onClose={function (): void {
-        throw new Error('Function not implemented.');
-      } } />
+      <BookForm onAdd={addBook} isOpen={false} onClose={() => {}} />
       <BookTable 
         books={books} 
         onDelete={handleDelete} 

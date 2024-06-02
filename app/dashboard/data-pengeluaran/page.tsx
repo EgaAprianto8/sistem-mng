@@ -1,10 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { getBooks, setBooks  } from '@/components/utils/localStorage';
 
-const DataPengeluaran = () => {
-  const [books, setBooksState] = useState<any[]>([]);
+const DataPengeluaran = () => {  const [books, setBooksState] = useState<any[]>([]);
   const [selectedBooks, setSelectedBooks] = useState<any[]>([]);
   const [invoice, setInvoice] = useState<any | null>(null);
   const [history, setHistory] = useState<any[]>([]);
@@ -15,9 +13,16 @@ const DataPengeluaran = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setBooksState(getBooks());
+      const storedBooks = localStorage.getItem('books');
+      setBooksState(storedBooks ? JSON.parse(storedBooks) : []);
     }
   }, []);
+
+  const saveBooksToLocalStorage = (books: any[]) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('books', JSON.stringify(books));
+    }
+  };
 
   const handleSelectBook = (index: number) => {
     setSelectedBookIndex(index);
@@ -56,7 +61,7 @@ const DataPengeluaran = () => {
     };
 
     if (typeof window !== 'undefined') {
-      setBooks(newBooks);
+      localStorage.setItem('books', JSON.stringify(newBooks));
     }
     setBooksState(newBooks);
     setSelectedBooks([]);

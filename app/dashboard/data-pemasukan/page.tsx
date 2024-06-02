@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import BookForm from '@/components/pages/dashboard/BookForm';
-import { getBooks, setBooks } from '@/components/utils/localStorage';
 
 const DataPemasukan = () => {
   const [books, setBooksState] = useState<any[]>([]);
@@ -10,16 +9,21 @@ const DataPemasukan = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setBooksState(getBooks());
+      const storedBooks = localStorage.getItem('books');
+      setBooksState(storedBooks ? JSON.parse(storedBooks) : []);
     }
   }, []);
 
+  const saveBooksToLocalStorage = (books: any[]) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('books', JSON.stringify(books));
+    }
+  };
+
   const addBook = (book: any) => {
     const newBooks = [...books, book];
-    if (typeof window !== 'undefined') {
-      setBooks(newBooks);
-    }
     setBooksState(newBooks);
+    saveBooksToLocalStorage(newBooks);
   };
 
   const chartData = books.reduce((acc: any[], book) => {

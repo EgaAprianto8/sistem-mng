@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
@@ -88,7 +90,7 @@ const DashboardLayouts = ({ children }: PropTypes) => {
                         </button>
                         <button
                             className={
-                                pathName === '/dashboard'
+                                pathName === '/dashboard/datapemasukan'
                                     ? 'bg-[#f5e0ff] text-[#9B52BD] rounded-3xl w-full py-4 px-10 font-bold'
                                     : 'hover:bg-[#f5e0ff] bg-white hover:text-[#9B52BD] text-black rounded-3xl w-full py-4 px-10 hover:font-bold'
                             }
@@ -113,7 +115,7 @@ const DashboardLayouts = ({ children }: PropTypes) => {
                         </button>
                         <button
                             className={
-                                pathName === '/dashboard'
+                                pathName === '/dashboard/databuku'
                                     ? 'bg-[#f5e0ff] text-[#9B52BD] rounded-3xl w-full py-4 px-10 font-bold'
                                     : 'hover:bg-[#f5e0ff] bg-white hover:text-[#9B52BD] text-black rounded-3xl w-full py-4 px-10 hover:font-bold'
                             }
@@ -138,7 +140,7 @@ const DashboardLayouts = ({ children }: PropTypes) => {
                         </button>
                         <button
                             className={
-                                pathName === '/dashboard'
+                                pathName === '/dashboard/datapengeluaran'
                                     ? 'bg-[#f5e0ff] text-[#9B52BD] rounded-3xl w-full py-4 px-10 font-bold'
                                     : 'hover:bg-[#f5e0ff] bg-white hover:text-[#9B52BD] text-black rounded-3xl w-full py-4 px-10 hover:font-bold'
                             }

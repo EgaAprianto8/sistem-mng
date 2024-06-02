@@ -156,7 +156,7 @@ const DataPengeluaran = () => {
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {history.map((invoice, index) => (
-            <tr key={index} className="hover:bg-gray-100">
+            <tr key={index} className="hover:bg-gray-100">  
               <td className="px-6 py-4 whitespace-nowrap">#{invoice.id}</td>
               <td className="px-6 py-4 whitespace-nowrap">{invoice.date}</td>
               <td className="px-6 py-4 whitespace-nowrap">{formatCurrency(invoice.total)+'.000'}</td>

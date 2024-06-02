@@ -9,7 +9,9 @@ const DataPemasukan = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    setBooksState(getBooks());
+    if (typeof window !== 'undefined') {
+      setBooksState(getBooks());
+    }
   }, []);
 
   const addBook = (book: any) => {

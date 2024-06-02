@@ -15,7 +15,9 @@ const BooksPage = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    setBooksState(getBooks());
+    if (typeof window !== 'undefined') {
+      setBooksState(getBooks());
+    }
   }, []);
 
   const addBook = (book: any) => {

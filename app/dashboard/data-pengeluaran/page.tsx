@@ -14,7 +14,9 @@ const DataPengeluaran = () => {
   const [selectedBookIndex, setSelectedBookIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    setBooksState(getBooks());
+    if (typeof window !== 'undefined') {
+      setBooksState(getBooks());
+    }
   }, []);
 
   const handleSelectBook = (index: number) => {

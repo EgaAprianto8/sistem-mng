@@ -22,15 +22,15 @@ export default function page() {
           <h2 className="text-center mt-5 font-bold">Nama Admin</h2>
   
         <div className='mt-12 mb-12 flex gap-12 py-4 px-8 text-lg'>
-          <Link href="/dashboard/databuku">
+          <Link href="/dashboard/data-buku">
           <Button variant="outline" className='py-12 px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black'>Data Buku</Button>
           </Link>
   
-          <Link href="/dashboard/datapemasukan">
+          <Link href="/dashboard/data-pemasukan">
           <Button variant="outline" className='py-12 px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black'>Data Pemasukan</Button>
           </Link>
   
-          <Link href="/dashboard/datapengeluaran">
+          <Link href="/dashboard/data-pengeluaran">
           <Button variant="outline" className='py-12 px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black'>Data Pengeluaran</Button>
           </Link>
   

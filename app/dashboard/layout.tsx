@@ -27,7 +27,7 @@ const DashboardLayouts = ({ children }: PropTypes) => {
         redirect('/')
     }
     return (
-        <div className="dark:bg-boxdark-2 dark:text-bodydark">
+        <div className="dark:bg-boxdark-2 dark:text-bodydark overflow-hidden">
             {loading ? (
                 <Loader />
             ) : (

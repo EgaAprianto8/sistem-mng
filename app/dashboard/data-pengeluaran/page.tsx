@@ -95,7 +95,7 @@ const DataPengeluaran = () => {  const [books, setBooksState] = useState<any[]>(
                 <td className="px-6 py-4 whitespace-nowrap">{book.stock}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button 
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                    className="px-4 py-2 bg-meta-5 text-white rounded-md hover:bg-[#3C50E0]"
                     onClick={() => handleSelectBook(index)}
                   >
                     Pilih
@@ -107,7 +107,7 @@ const DataPengeluaran = () => {  const [books, setBooksState] = useState<any[]>(
         </table>
       </div>
       <button 
-        className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 mb-6"
+        className="px-4 py-2 bg-meta-3 text-white rounded-md hover:bg-success mb-6"
         onClick={handleCheckout}
       >
         Checkout
@@ -188,13 +188,13 @@ const QuantityModal = ({ onClose, onSave }: { onClose: () => void, onSave: (quan
         />
         <div className="flex justify-end">
           <button 
-            className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 mr-2"
+            className="px-4 py-2 bg-bodydark text-white rounded-md hover:bg-body mr-2"
             onClick={onClose}
           >
             Batal
           </button>
           <button 
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            className="px-4 py-2 bg-meta-5 text-white rounded-md hover:bg-[#3C50E0]"
             onClick={handleSave}
           >
             Simpan
@@ -232,13 +232,13 @@ const CustomerModal = ({ onClose, onSave }: { onClose: () => void, onSave: (deta
         />
         <div className="flex justify-end">
           <button 
-            className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 mr-2"
+            className="px-4 py-2 bg-bodydark text-white rounded-md hover:bg-body mr-2"
             onClick={onClose}
           >
             Batal
           </button>
           <button 
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            className="px-4 py-2 bg-meta-5 text-white rounded-md hover:bg-[#3C50E0]"
             onClick={handleSave}
           >
             Simpan

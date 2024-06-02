@@ -51,17 +51,17 @@ const DataPemasukan = () => {
         </ResponsiveContainer>
       </div>
       <table className="min-w-full divide-y divide-gray-200 mb-6">
-        <thead className="bg-gray-50">
+        <thead className="bg-bodydark1">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Perusahaan</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Buku</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Penerbit</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-strokedark uppercase tracking-wider">Perusahaan</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-strokedark uppercase tracking-wider">Nama Buku</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-strokedark uppercase tracking-wider">Penerbit</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-strokedark uppercase tracking-wider">Stock</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-strokedark uppercase tracking-wider">Harga</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-strokedark uppercase tracking-wider">Tanggal</th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-bodydark2">
           {books.map((book, index) => (
             <tr key={index}>
               <td className="px-6 py-4 whitespace-nowrap">{book.company}</td>
@@ -76,7 +76,7 @@ const DataPemasukan = () => {
       </table>
       <button
         onClick={() => setIsModalOpen(true)}
-        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#8884d8] shadow-sm hover:bg-[#4a477d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7470b9]"
       >
         Tambah Buku
       </button>

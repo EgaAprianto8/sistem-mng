@@ -42,7 +42,7 @@ const BookForm: React.FC<BookFormProps> = ({ isOpen, onClose, onAdd }) => {
             <div>
               <label className="block text-sm font-medium text-gray-700">Nama Buku</label>
               <input 
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 value={name} 
                 onChange={(e) => setName(e.target.value)} 
               />
@@ -50,7 +50,7 @@ const BookForm: React.FC<BookFormProps> = ({ isOpen, onClose, onAdd }) => {
             <div>
               <label className="block text-sm font-medium text-gray-700">Penerbit</label>
               <input 
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 value={publisher} 
                 onChange={(e) => setPublisher(e.target.value)} 
               />
@@ -59,7 +59,7 @@ const BookForm: React.FC<BookFormProps> = ({ isOpen, onClose, onAdd }) => {
               <label className="block text-sm font-medium text-gray-700">Stock</label>
               <input 
                 type="number" 
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 value={stock} 
                 onChange={(e) => setStock(Number(e.target.value))} 
               />
@@ -68,7 +68,7 @@ const BookForm: React.FC<BookFormProps> = ({ isOpen, onClose, onAdd }) => {
               <label className="block text-sm font-medium text-gray-700">Harga (Rp)</label>
               <input 
                 type="number" 
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 value={price} 
                 onChange={(e) => setPrice(Number(e.target.value))} 
               />
@@ -76,7 +76,7 @@ const BookForm: React.FC<BookFormProps> = ({ isOpen, onClose, onAdd }) => {
             <div>
               <label className="block text-sm font-medium text-gray-700">Perusahaan</label>
               <input 
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 value={company} 
                 onChange={(e) => setCompany(e.target.value)} 
               />
@@ -91,7 +91,7 @@ const BookForm: React.FC<BookFormProps> = ({ isOpen, onClose, onAdd }) => {
               </button>
               <button 
                 type="submit" 
-                className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="px-4 py-2 text-sm font-medium text-white bg-[#8884d8] border border-transparent rounded-md shadow-sm hover:bg-[#514d9f] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#b2aef4]"
               >
                 Tambah Buku
               </button>

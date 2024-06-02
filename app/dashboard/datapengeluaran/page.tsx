@@ -1,12 +1,13 @@
-import IndikatorNilai from '@/components/pages/IndikatorNilai'
+'use client'
+import DataPengeluaran from '@/components/pages/Checkout'
 import React from 'react'
 
-function ProgressPage() {
+const Page = () => {
   return (
     <div>
-      <IndikatorNilai/>
+      <DataPengeluaran/>
     </div>
   )
 }
 
-export default ProgressPage
+export default Page

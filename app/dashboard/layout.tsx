@@ -24,7 +24,7 @@ const DashboardLayouts = ({ children }: PropTypes) => {
                             <Image src="/images/logoSistem.png" alt="logo" fill={true} className="object-cover" />
                         </div>
                         <div className="border-r border-white mr-[15px] ml-[15px] h-[35px] my-auto" />
-                        <h1 className="font-bold text-white my-auto text-2xl">Sistem Informasi PAUD Bani Ruqoyah</h1>
+                        <h1 className="font-bold text-white my-auto text-2xl">Sistem POS Toko Buku.. </h1>
                     </div>
                     <Popover>
                         <PopoverTrigger>

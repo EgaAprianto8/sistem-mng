@@ -252,3 +252,11 @@ span.flatpickr-weekday,
 .map-btn .jvectormap-container .jvectormap-zoomin {
     right: 45px;
 }
+
+.bg-hero {
+    background-image: url("https://i.ibb.co.com/g785bTt/jamie-taylor-9-C3-TMXw-Qj-Q-unsplash.jpg");
+    background-position:50% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }

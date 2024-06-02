@@ -4,7 +4,7 @@
 import './data-tables-css.css';
 import './satoshi.css';
 import Loader from '@/components/common/loader';
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
 
 import Sidebar from '@/components/layouts/sidebar';
 import Header from '@/components/layouts/header';
@@ -15,6 +15,7 @@ type PropTypes = {
 };
 
 const DashboardLayouts = ({ children }: PropTypes) => {
+    const sudahLogin = localStorage.getItem('sudahMasuk')
     const pathName = usePathname();
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [loading, setLoading] = useState<boolean>(true);
@@ -22,7 +23,9 @@ const DashboardLayouts = ({ children }: PropTypes) => {
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000);
     }, []);
-
+    if (sudahLogin == 'false'){
+        redirect('/')
+    }
     return (
         <div className="dark:bg-boxdark-2 dark:text-bodydark">
             {loading ? (

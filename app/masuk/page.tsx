@@ -1,8 +1,9 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
+import DashboardLayouts from '../dashboard/layout';
 
 function buatAkun() {
     const [userName, setUserName] = useState('');
@@ -16,6 +17,9 @@ function buatAkun() {
             localStorage.setItem('sudahMasuk', 'false');
             localStorage.setItem('adminName', 'admin');
             localStorage.setItem('adminPw', 'admin123');
+        }
+        if (localStorage.getItem('sudahMasuk') === 'true') {
+            redirect('/dashboard')
         }
     }, []);
 

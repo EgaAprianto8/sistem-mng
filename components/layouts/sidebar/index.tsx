@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname, useRouter } from 'next/navigation';
 import SidebarLinkGroup from './SidebarLinkGroup';
 import Image from 'next/image';
 import { signOut, useSession } from 'next-auth/react';
+import { useToast } from '@/components/ui/use-toast';
 
 interface SidebarProps {
     sidebarOpen: boolean;
@@ -11,6 +12,8 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
+    const {toast} = useToast();
+    const router = useRouter();
     const pathname = usePathname();
 
     const trigger = useRef<any>(null);
@@ -20,7 +23,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     const [sidebarExpanded, setSidebarExpanded] = useState(
         storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true'
     );
-
+    
     // close on click outside
     useEffect(() => {
         const clickHandler = ({ target }: MouseEvent) => {
@@ -194,7 +197,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         <ul className="mb-6 flex flex-col gap-1.5">
                             {/* <!-- Menu Logout --> */}
                             <li>
-                                <button onClick={() => signOut()}>
+                                <button onClick={() => {localStorage.setItem('sudahMasuk', 'false')
+                                    router.push('/')
+                                    toast({
+                                        title: 'Berhasil Logout',
+                                    });
+                                }}>
                                     <div
                                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                                             pathname.includes('chart') && 'bg-graydark dark:bg-meta-4'

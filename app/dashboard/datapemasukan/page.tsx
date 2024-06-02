@@ -1,27 +1,16 @@
 'use client'
 
-import BookForm from '@/components/pages/BookForm';
-import { useState, useEffect } from 'react';
-import { getBooks, setBooks } from '@/components/utils/localStorage';
-
-const DataPemasukan = () => {
-  const [books, setBooksState] = useState<any[]>([]);
-
-  useEffect(() => {
-    setBooksState(getBooks());
-  }, []);
+import BookForm from '@/components/pages/BookForm'
+import { useState } from 'react';
+function DataPemasukan() {
+  const [books, setBooks] = useState<any[]>([]);
 
   const addBook = (book: any) => {
-    const newBooks = [...books, book];
-    setBooks(newBooks);
-    setBooksState(newBooks);
+    setBooks([...books, book]);
   };
-
   return (
-    <div className="container mx-auto p-4">
-      <BookForm onAdd={addBook} />
-    </div>
-  );
-};
+    <BookForm onAdd={addBook}/>
+  )
+}
 
-export default DataPemasukan;
+export default DataPemasukan

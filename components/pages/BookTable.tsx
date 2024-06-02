@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react';
 
 interface BookTableProps {
@@ -13,9 +11,12 @@ const BookTable: React.FC<BookTableProps> = ({ books, onDelete, onUpdate }) => {
     const name = prompt('Nama Buku', books[index].name);
     const publisher = prompt('Penerbit', books[index].publisher);
     const stock = prompt('Stock', books[index].stock);
+    const price = prompt('Harga (Rp)', books[index].price);
+    const company = prompt('Perusahaan', books[index].company);
 
-    if (name !== null && publisher !== null && stock !== null) {
-      onUpdate(index, { name, publisher, stock: Number(stock) });
+    if (name !== null && publisher !== null && stock !== null && price !== null && company !== null) {
+      const formattedPrice = `Rp ${Number(price).toLocaleString('id-ID')}`;
+      onUpdate(index, { name, publisher, stock: Number(stock), price: formattedPrice, company });
     }
   };
 
@@ -27,6 +28,8 @@ const BookTable: React.FC<BookTableProps> = ({ books, onDelete, onUpdate }) => {
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Buku</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Penerbit</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Perusahaan</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
           </tr>
         </thead>
@@ -36,6 +39,8 @@ const BookTable: React.FC<BookTableProps> = ({ books, onDelete, onUpdate }) => {
               <td className="px-6 py-4 whitespace-nowrap">{book.name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{book.publisher}</td>
               <td className="px-6 py-4 whitespace-nowrap">{book.stock}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{book.price}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{book.company}</td>
               <td className="px-6 py-4 whitespace-nowrap space-x-2">
                 <button 
                   className="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600"

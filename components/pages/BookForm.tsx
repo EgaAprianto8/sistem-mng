@@ -8,14 +8,19 @@ const BookForm: React.FC<BookFormProps> = ({ onAdd }) => {
   const [name, setName] = useState('');
   const [publisher, setPublisher] = useState('');
   const [stock, setStock] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [company, setCompany] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const book = { name, publisher, stock };
+    const formattedPrice = `Rp ${Number(price).toLocaleString('id-ID')}`;
+    const book = { name, publisher, stock, price: formattedPrice, company };
     onAdd(book);
     setName('');
     setPublisher('');
     setStock(0);
+    setPrice(0);
+    setCompany('');
   };
 
   return (
@@ -45,6 +50,23 @@ const BookForm: React.FC<BookFormProps> = ({ onAdd }) => {
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             value={stock} 
             onChange={(e) => setStock(Number(e.target.value))} 
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Harga (Rp)</label>
+          <input 
+            type="number" 
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            value={price} 
+            onChange={(e) => setPrice(Number(e.target.value))} 
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Perusahaan</label>
+          <input 
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            value={company} 
+            onChange={(e) => setCompany(e.target.value)} 
           />
         </div>
         <button 

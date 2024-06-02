@@ -39,7 +39,7 @@ const BookTable: React.FC<BookTableProps> = ({ books, onDelete, onUpdate }) => {
                   className="px-4 py-2 bg-meta-1 text-white rounded-md hover:bg-[#552127]"
                   onClick={() => onDelete(index)}
                 >
-                  Delete
+                  Hapus
                 </button>
               </td>
             </tr>

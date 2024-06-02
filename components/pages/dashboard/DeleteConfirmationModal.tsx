@@ -28,7 +28,7 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({ isOpe
             <button 
               type="button" 
               onClick={() => { onConfirm(); onClose(); }}
-              className="px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              className="px-4 py-2 bg-meta-1 text-white rounded-md hover:bg-[#552127]"
             >
               Hapus
             </button>

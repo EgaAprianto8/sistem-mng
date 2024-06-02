@@ -315,7 +315,7 @@ const Invoice = ({ invoice }: { invoice: any }) => {
         <tfoot>
           <tr>
             <td colSpan={3} className="px-6 py-4 text-right font-bold">Total</td>
-            <td className="px-6 py-4">{formatCurrency(invoice.total)}</td>
+            <td className="px-6 py-4">{formatCurrency(invoice.items.reduce((acc: number, item: { price: any; quantity: number; }) => acc + parseFormattedPrice(item.price) * item.quantity, 0)) + ".000"}</td>
           </tr>
         </tfoot>
       </table>

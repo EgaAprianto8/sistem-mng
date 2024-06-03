@@ -202,7 +202,7 @@ const QuantityModal = ({ onClose, onSave }: { onClose: () => void, onSave: (quan
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center z-99999 bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded shadow-md">
         <h2 className="text-xl font-bold mb-4">Masukkan Jumlah</h2>
         <input 
@@ -240,7 +240,7 @@ const CustomerModal = ({ onClose, onSave }: { onClose: () => void, onSave: (deta
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-99999 flex items-center justify-center  bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded shadow-md">
         <h2 className="text-xl font-bold mb-4">Masukkan Detail Pelanggan</h2>
         <input 
@@ -277,7 +277,7 @@ const CustomerModal = ({ onClose, onSave }: { onClose: () => void, onSave: (deta
 
 const InvoiceModal = ({ invoice, onClose }: { invoice: any, onClose: () => void }) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center z-99999 bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded shadow-md">
         <div className='flex justify-end'>
           <button 
